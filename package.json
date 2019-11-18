@@ -1,0 +1,77 @@
+{
+  "name": "inventi-interview-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Inventi interview app",
+  "license": "MIT",
+  "author": "Jakub Menda",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "yarn clean && cross-env NODE_ENV=production parcel build ./src/index.html",
+    "clean": "shx rm -r dist || true",
+    "code:check": "concurrently \"yarn prettier:check\" \"yarn tslint:check\" \"yarn tsc:check\"",
+    "code:fix": "concurrently \"yarn prettier:fix\" \"yarn tslint:fix\"",
+    "prettier:check": "prettier -l \"src/**/*.ts*\"",
+    "prettier:fix": "prettier --write \"src/**/*.ts*\"",
+    "start": "parcel ./src/index.html --no-cache",
+    "tsc:check": "tsc --noEmit --skipLibCheck",
+    "tslint:check": "tslint -q \"src/**/*.ts*\"",
+    "tslint:fix": "tslint -q --fix \"src/**/*.ts*\""
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "@material-ui/core": "^4.6.1",
+    "@types/node": "^12.11.1",
+    "axios": "^0.19.0",
+    "lodash.get": "^4.4.2",
+    "parcel": "^1.12.4",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "shx": "^0.3.2",
+    "styled-components": "^4.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/axios": "^0.14.0",
+    "@types/react": "^16.9.7",
+    "@types/react-dom": "^16.9.2",
+    "@types/styled-components": "^4.1.19",
+    "autoprefixer": "^9.7.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-typescript": "^7.0.0-alpha.19",
+    "concurrently": "^5.0.0",
+    "cross-env": "^6.0.3",
+    "prettier": "^1.13.7",
+    "react-hot-loader": "^4.12.15",
+    "ts-loader": "^6.2.0",
+    "tslint": "^5.20.0",
+    "tslint-react-hooks": "^2.2.1",
+    "typescript": "3.6.4"
+  },
+  "alias": {
+    "assets": "./src/assets",
+    "components": "./src/components",
+    "constants": "./src/constants",
+    "features": "./src/features",
+    "hooks": "./src/hooks",
+    "utils": "./src/utils",
+    "templates": "./src/templates"
+  },
+  "postcss": {
+    "modules": false,
+    "plugins": {
+      "autoprefixer": {
+        "flexbox": "no-2009"
+      }
+    }
+  }
+}
