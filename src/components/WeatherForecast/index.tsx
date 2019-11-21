@@ -3,6 +3,7 @@ import ForecastForm from 'components/ForecastForm'
 import ResultsList from 'components/List'
 import { formatWeatherData } from 'components/WeatherForecast/utils'
 import React, { useState } from 'react'
+import { getErrorMessage } from 'utils/errorHandling'
 import { requestWeatherData } from 'utils/requests'
 import { FormWrapper, Wrapper } from './styled'
 
@@ -15,18 +16,15 @@ const WeatherForecast = (props: Props) => {
   const handleSubmit = async (searchString: string) => {
     try {
       const weatherData = await requestWeatherData(searchString)
-      console.warn('Weather data', weatherData)
       setResults(current => [...current, formatWeatherData(weatherData)])
     } catch (e) {
-      setError('Sorry, failed to fetch weather data')
+      setError(getErrorMessage(e))
     }
   }
 
   const handleCloseSnack = () => {
     setError('')
   }
-
-  console.log('res', results)
 
   return (
     <Wrapper>
